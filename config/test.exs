@@ -7,8 +7,7 @@ config :ash, AshWeb.Endpoint,
   server: false
 
 # Email dispatch
-config :ash, Ash.Mailer,
-  adapter: Bamboo.TestAdapter
+config :ash, Ash.Mailer, adapter: Bamboo.TestAdapter
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -17,6 +16,6 @@ config :logger, level: :warn
 config :ash, Ash.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ash_test",
+  database: "lambda_form_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

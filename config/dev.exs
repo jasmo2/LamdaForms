@@ -20,12 +20,10 @@ config :ash, AshWeb.Endpoint,
   watchers: []
 
 # Email dispatch
-config :ash, Ash.Mailer,
-  adapter: Bamboo.LocalAdapter
+config :ash, Ash.Mailer, adapter: Bamboo.LocalAdapter
 
 # Guardian key
-config :ash, Ash.Guardian,
-  secret_key: "M1pKbbFJX0Qsez5vMl8bzKeQOdbvQigRZcHz1IYIKrmhC9zSsWO0uNi8ACmzpsar"
+config :ash, Ash.Guardian, secret_key: System.get_env("SERCRE_KEY")
 
 # Test watcher
 config :mix_test_watch,
@@ -45,6 +43,6 @@ config :phoenix, :plug_init_mode, :runtime
 config :ash, Ash.Repo,
   username: "postgres",
   password: "postgres",
-  database: "ash_dev",
+  database: "lambda_form_dev",
   hostname: "localhost",
   pool_size: 10

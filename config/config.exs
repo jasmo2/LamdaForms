@@ -19,8 +19,7 @@ config :ash, AshWeb.Endpoint,
   pubsub: [name: Ash.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # JWT
-config :ash, Ash.Guardian,
-  issuer: "api"
+config :ash, Ash.Guardian, issuer: "api"
 
 # Configures Elixir's Logger
 config :logger, :console,
