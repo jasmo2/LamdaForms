@@ -6,17 +6,23 @@ defmodule AshWeb.Schema.AuthResolver do
     {:ok, %{success: true}}
   end
 
+  def login(%{email: email, password: password}, _info) do
+    case Accounts.authenticate_password(email, password) do
+      {:ok, user} -> encode_and_sign(user)
+      {:error, reason} -> {:error, reason}
+    end
+  end
   def login(%{token: token}, _info) do
     case Accounts.verify_token_value(token) do
       {:ok, user} -> encode_and_sign(user)
       {:error, reason} -> {:error, reason}
     end
   end
-
-  def login(%{email: email, password: password}, _info) do
-    case Accounts.authenticate_password(email, password) do
-      {:ok, user} -> encode_and_sign(user)
-      {:error, reason} -> {:error, reason}
+  def login(%{token: token, provider: provider}, _info) do
+    case provider do
+      :google ->
+        # {:ok, user} =
+        Accounts.authenticate_token(token)
     end
   end
 

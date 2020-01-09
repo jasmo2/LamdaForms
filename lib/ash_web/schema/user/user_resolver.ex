@@ -22,6 +22,13 @@ defmodule AshWeb.Schema.UserResolver do
     end
   end
 
+  def oauth_create(%{token: token}, _info) do
+    case Accounts.create_oauth_user(token) do
+      {:ok, user} -> {:ok, user}
+      {:error, changeset} -> ErrorHelper.format_errors(changeset)
+    end
+  end
+
   def update(%{id: id, user: user_params}, _info) do
     Accounts.get_user!(id)
     |> Accounts.update_user(user_params)

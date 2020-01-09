@@ -40,8 +40,10 @@ defmodule Ash.MixProject do
   defp deps do
     [
       # HTTP Server
-      {:plug_cowboy, "~> 2.1.0"},
       {:corsica, "~> 1.1.2"},
+      {:plug_cowboy, "~> 2.1.0"},
+      {:poison, "~> 4.0.1"},
+      {:httpoison, "~> 1.6"},
 
       # Phoenix
       {:jason, "~> 1.1"},
@@ -62,9 +64,9 @@ defmodule Ash.MixProject do
       {:dataloader, "~> 1.0.6"},
 
       # Authentication
-      {:guardian, "~> 2.0.0"},
-      {:comeonin, "~> 5.1.3"},
       {:argon2_elixir, "~> 2.1.2"},
+      {:comeonin, "~> 5.1.3"},
+      {:guardian, "~> 2.0.0"},
 
       # Misc
       {:gettext, "~> 0.11"},  # Translations

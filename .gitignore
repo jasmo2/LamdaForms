@@ -37,3 +37,4 @@ api-*.tar
 # variables.
 /config/*.secret.exs
 .env
+.vscode/launch.json

@@ -7,6 +7,7 @@ defmodule Ash.Accounts do
 
   alias Ash.{Repo, Accounts, Mailer, Email}
   alias Ash.Accounts.{User, AuthToken, AuthRequest}
+  alias Ash.Oauth.Google
   alias AshWeb.Endpoint
 
   def data do
@@ -82,6 +83,12 @@ defmodule Ash.Accounts do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def create_oauth_user(token) do
+    user = Google.get_info(token)
+    IO.inspect user
+
   end
 
   @doc """
@@ -289,6 +296,13 @@ defmodule Ash.Accounts do
   def authenticate_password(email, given_password) do
     get_user_by_email!(email)
     |> check_password(given_password)
+  end
+
+  def authenticate_token(%{token: token, provider: provider}) do
+    IO.puts provider
+    Google.get_info(token)
+    # get_user_by_email!(email)
+    # |> check_password(given_password)
   end
 
   defp check_password(nil, _), do: {:error, "Incorrect email or password"}

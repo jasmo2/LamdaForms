@@ -6,6 +6,7 @@ defmodule AshWeb.Schema.UserTypes do
 
   object :user do
     field(:id, :id)
+    field(:token, :string)
     field(:email, :string)
     field(:username, :string)
     field(:first_name, :string)
@@ -41,6 +42,11 @@ defmodule AshWeb.Schema.UserTypes do
       arg(:password, :string)
 
       resolve(&UserResolver.create/2)
+    end
+
+    field :create_oauth_user, :user do
+      arg(:token, :string)
+      resolve(&UserResolver.oauth_create/2)
     end
 
     field :update_user, :user do
