@@ -1,2 +1,2 @@
-alias Ash.Oauth.Google
+alias Ash.Oauth.Google, as: OGoogle
 alias Ash.Accounts

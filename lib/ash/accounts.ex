@@ -87,7 +87,6 @@ defmodule Ash.Accounts do
 
   def create_oauth_user(token) do
     user = Google.get_info(token)
-    IO.puts "TLC: create_oauth_user -> user, #{user}"
 
   end
 
