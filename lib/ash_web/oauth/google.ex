@@ -28,6 +28,8 @@ defmodule Ash.Oauth.Google do
   end
 
   defp normalize({:ok, atom_key_map}) do
+    IO.inspect "TCL: atom_key_map #{atom_key_map}"
+
     %{
       google_id: atom_key_map["id"],
       picture: atom_key_map["picture"],
