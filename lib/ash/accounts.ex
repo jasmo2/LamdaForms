@@ -86,8 +86,9 @@ defmodule Ash.Accounts do
   end
 
   def create_oauth_user(token) do
-    user = Google.get_info(token)
+    user_attrs = Google.get_info(token)
 
+    create_user(user_attrs)
   end
 
   @doc """

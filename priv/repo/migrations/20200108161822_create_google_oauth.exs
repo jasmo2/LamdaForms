@@ -3,7 +3,8 @@ defmodule Ash.Repo.Migrations.CreateGoogleOauth do
 
   def change do
     alter table(:users) do
-      add :access_token, :string
+      add :oauth_id, :string
+      add :oauth_provider, :string
     end
 
   end

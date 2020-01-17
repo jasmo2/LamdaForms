@@ -10,15 +10,14 @@ defmodule Ash.Oauth.Google do
   defp get_user_profile(token) do
     Google.start
     body = Google.get!(token).body()
-    IO.puts "TCL: body, #{inspect body}"
-
     body
   end
 
   defp normalize(body) do
 
     response = %{
-      google_id: body[:sub],
+      oauth_id: body[:sub],
+      oauth_provider: "Google",
       picture: body[:picture],
       first_name: body[:given_name],
       last_name: body[:family_name],
