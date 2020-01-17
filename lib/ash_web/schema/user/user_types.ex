@@ -38,7 +38,10 @@ defmodule AshWeb.Schema.UserTypes do
       arg(:last_name, :string)
       arg(:password, :string)
 
-      resolve(&UserResolver.create/2)
+      resolve fn (attrs, info) ->
+        new_attrs = Map.put(attrs, "oauth_provider",  "Email")
+        UserResolver.create(new_attrs, info)
+      end
     end
 
     field :create_oauth_user, :user do
